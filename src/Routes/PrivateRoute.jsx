@@ -1,14 +1,21 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+<<<<<<< Updated upstream
 
 const PrivateRoute = () => {
   const { user } = useAuthContext();
 =======
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+=======
+>>>>>>> Stashed changes
 import { CircularProgress, Box } from "@mui/material";
 
 const PrivateRoute = () => {
@@ -28,13 +35,8 @@ const PrivateRoute = () => {
       </Box>
     );
   }
->>>>>>> Stashed changes
 
   return user ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
