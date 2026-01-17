@@ -1,16 +1,18 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
-import Dashboard from "../pages/dashboard/Dashboard";
+import Dashboard from "../Pages/Dashboard/Dashboard"; // usar la que tenga la ruta correcta
 import Profile from "../pages/settings/Profile";
 import MainLayout from "../components/layout/MainLayout";
 
 const AppRouter = () => {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/login" replace />} />
+
       <Route element={<PublicRoute />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

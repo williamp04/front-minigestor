@@ -1,17 +1,26 @@
-import { Container, Box, Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { Link, Typography } from "@mui/material";
+import AuthLayout from "../../components/Auth/AuthLayout";
+import AuthCard from "../../components/Auth/AuthCard";
 import RegisterForm from "../../components/forms/RegisterForm";
 
 const Register = () => {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ mt: 8 }}>
-        <Typography variant="h4" mb={2} textAlign="center">
-          Crear cuenta
-        </Typography>
-
+    <AuthLayout>
+      <AuthCard
+        title="Sign up to continue"
+        subtitle={
+          <>
+            Already have an account?{" "}
+            <Link component={RouterLink} to="/login">
+              Log in
+            </Link>
+          </>
+        }
+      >
         <RegisterForm />
-      </Box>
-    </Container>
+      </AuthCard>
+    </AuthLayout>
   );
 };
 
