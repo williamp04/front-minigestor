@@ -36,10 +36,8 @@ const RegisterForm = () => {
 
       const { user, token } = response.data;
 
-      // Guardar token
       localStorage.setItem("token", token);
 
-      // Guardar usuario global
       login({
         uuid: user.uuid,
         name: user.name,
