@@ -14,7 +14,7 @@ const AuthCard = ({ title, subtitle, children }) => {
     >
       {/* Logo */}
       <Typography
-        variant="h5"
+        variant="h4"
         fontWeight="bold"
         color="primary"
         mb={1}

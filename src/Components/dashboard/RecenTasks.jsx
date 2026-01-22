@@ -7,12 +7,6 @@ import {
     Divider,
   } from "@mui/material";
   
-  const tasks = [
-    { title: "Diseñar login", status: "Completada" },
-    { title: "Crear API de tareas", status: "En progreso" },
-    { title: "Conectar dashboard", status: "Pendiente" },
-  ];
-  
   const RecentTasks = () => {
     return (
       <Paper
