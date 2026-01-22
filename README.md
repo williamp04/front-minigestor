@@ -1,16 +1,57 @@
-# React + Vite
+Front-Minigestor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front-end del Mini Gestor de Tareas
+Construido con React 18, Vite y Material UI, este proyecto funciona como interfaz para gestionar usuarios, tareas y roles.
 
-Currently, two official plugins are available:
+Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React 18
 
-## React Compiler
+Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Material UI (@mui/material y @mui/icons-material)
 
-## Expanding the ESLint configuration
+React Router DOM
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React Redux (@reduxjs/toolkit, react-redux)
+
+React Quill (editor de texto)
+
+Axios (para consumo de API)
+
+Requisitos
+
+Node.js >= 18
+
+npm o yarn
+
+Backend del Mini Gestor de Tareas levantado (URL configurada en src/api/axios.js)
+
+Clonar el repositorio
+git clone https://github.com/TU_USUARIO/front-minigestor.git
+cd front-minigestor
+
+Instalación de dependencias
+
+Con npm:
+
+npm install
+
+
+Con yarn:
+
+yarn
+
+
+Esto instalará todas las dependencias listadas en package.json.
+
+Levantar el proyecto en modo desarrollo
+npm run dev
+
+
+O con yarn:
+
+yarn dev
+
+
+Por defecto, Vite levantará el servidor en http://localhost:5173. Abre tu navegador en esa URL.
