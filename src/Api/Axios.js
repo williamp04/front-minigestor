@@ -1,43 +1,28 @@
 import axios from "axios";
+import { store } from "../store";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_REACT_APP_URL_BACK,
   headers: {
     "Content-Type": "application/json",
+    Accept: "application/json",
   },
 });
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
-// Agregar token en cada petición si existe
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+  let token = store.getState().auth.token;
+
+  if (!token) {
+    token = localStorage.getItem("token");
+  }
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
   return config;
-});
-
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-export default api;
-=======
-=======
-// Agregar token en cada petición si existe
->>>>>>> Stashed changes
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-
-  return config;
+}, (error) => {
+  return Promise.reject(error);
 });
 
 export default api;
