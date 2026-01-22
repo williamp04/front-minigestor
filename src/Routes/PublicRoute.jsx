@@ -1,60 +1,12 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
+import { useSelector } from "react-redux";
 
 const PublicRoute = () => {
-  const { user } = useAuthContext();
+  const isAuthenticated = useSelector(
+    (state) => state.auth.isAuthenticated
+  );
 
-  return !user ? <Outlet /> : <Navigate to="/dashboard" replace />;
-=======
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
-import { useEffect } from "react";
-
-const PublicRoute = () => {
-  const { user, loading, logout } = useAuthContext();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/login" || location.pathname === "/register") {
-      
-    }
-  }, [location.pathname, logout]);
-
-  if (loading) return null;
-
-  if (user) return <Navigate to="/dashboard" replace />;
-
-  return <Outlet />;
->>>>>>> Stashed changes
-};
-
-export default PublicRoute;
-=======
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
-import { useEffect } from "react";
-
-const PublicRoute = () => {
-  const { user, loading, logout } = useAuthContext();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname === "/login" || location.pathname === "/register") {
-      
-    }
-  }, [location.pathname, logout]);
-
-  if (loading) return null;
-
-  if (user) return <Navigate to="/dashboard" replace />;
-
-  return <Outlet />;
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <Outlet />;
 };
 
 export default PublicRoute;
