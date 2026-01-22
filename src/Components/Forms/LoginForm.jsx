@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../../store/slices/authSlice";
 import api from "../../api/axios";
-import { useAuthContext } from "../../context/AuthContext";
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { login } = useAuthContext();
 
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -26,20 +23,22 @@ const LoginForm = () => {
     setError("");
 
     try {
-      const response = await api.post("/login", form);
-      const { user, token } = response.data;
+      const { data } = await api.post("/login", form);
 
-      localStorage.setItem("token", token);
-
-      login({
-        uuid: user.uuid,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      });
+      dispatch(
+        loginSuccess({
+          user: {
+            uuid: data.user.uuid,
+            name: data.user.name,
+            email: data.user.email,
+            role: data.user.role,
+          },
+          token: data.token,
+        })
+      );
 
       navigate("/dashboard");
-    } catch (err) {
+    } catch {
       setError("Credenciales inválidas");
     } finally {
       setLoading(false);
@@ -47,11 +46,10 @@ const LoginForm = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate>
+    <Box component="form" onSubmit={handleSubmit}>
       <TextField
         label="Email"
         name="email"
-        type="email"
         fullWidth
         margin="normal"
         value={form.email}
@@ -68,19 +66,9 @@ const LoginForm = () => {
         onChange={handleChange}
       />
 
-      {error && (
-        <Box mt={1} color="error.main" fontSize={14}>
-          {error}
-        </Box>
-      )}
+      {error && <Box color="error.main">{error}</Box>}
 
-      <Button
-        type="submit"
-        variant="contained"
-        fullWidth
-        sx={{ mt: 2 }}
-        disabled={loading}
-      >
+      <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }} disabled={loading}>
         Iniciar sesión
       </Button>
     </Box>
